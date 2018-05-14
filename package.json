@@ -1,6 +1,6 @@
 {
 	"name": "stream.finished",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Polyfill/shim for stream.finished in node versions < v10",
 	"main": "index.js",
 	"repository": {

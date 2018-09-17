@@ -1,8 +1,9 @@
 {
 	"name": "stream.finished",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Polyfill/shim for stream.finished in node versions < v10",
 	"main": "index.js",
+	"typings": "index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/dex4er/js-stream.finished"
@@ -25,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@es-shims/api": "^2.1.2",
+		"@types/node": "^10.10.1",
 		"eslint": "^5.6.0",
 		"eslint-config-semistandard": "^12.0.1",
 		"eslint-config-standard": "^12.0.0",
@@ -33,10 +35,12 @@
 		"eslint-plugin-standard": "^4.0.0",
 		"markdownlint-cli": "^0.13.0",
 		"semistandard": "^12.0.1",
+		"tslint": "^5.11.0",
+		"typescript": "^3.0.3",
 		"util.promisify": "^1.0.0"
 	},
 	"scripts": {
-		"pretest": "eslint . && markdownlint *.md && es-shim-api --bound",
+		"pretest": "eslint . && tsc --pretty -p . && tslint *.d.ts && markdownlint *.md && es-shim-api --bound",
 		"test": "npm run test:api",
 		"test:api": "node test"
 	}

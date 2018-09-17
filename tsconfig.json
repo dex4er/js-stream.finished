@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "lib": [
+      "es6"
+    ],
+    "module": "commonjs",
+    "noEmit": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "es6",
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}

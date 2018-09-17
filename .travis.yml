@@ -12,11 +12,17 @@ matrix:
     - node_js: "6"
     - node_js: "5"
     - node_js: "4"
+      NODE_ENV=production
     - node_js: "iojs-v3.3"
+      NODE_ENV=production
     - node_js: "iojs-v2.5"
+      NODE_ENV=production
     - node_js: "iojs-v1.8"
+      NODE_ENV=production
     - node_js: "0.12"
+      NODE_ENV=production
     - node_js: "0.10"
+      NODE_ENV=production
 
 install:
   - npm install

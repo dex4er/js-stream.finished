@@ -40,8 +40,9 @@
 		"util.promisify": "^1.0.0"
 	},
 	"scripts": {
+		"postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
 		"pretest": "eslint . && tsc --pretty -p . && tslint *.d.ts && markdownlint *.md && es-shim-api --bound",
-		"test": "npm run test:api",
-		"test:api": "node test"
+		"test": "npm run test:spec",
+		"test:spec": "node test"
 	}
 }

@@ -9,8 +9,9 @@ Polyfill for stream.finished in node versions &lt; v10
 node v10.0.0 added support for a built-in `stream.finished`:
 <https://github.com/nodejs/node/pull/19828>
 
-This package provides the built-in `stream.finished` in node v10.0.0 and later,
-and a replacement in other environments.
+This package provides the built-in
+[`stream.finished`](https://nodejs.org/api/stream.html#stream_stream_finished_stream_callback)
+in node v10.0.0 and later, and a replacement in other environments.
 
 This package implements the [es-shim API](https://github.com/es-shims/api)
 interface. It works in an ES3-supported environment and complies with the

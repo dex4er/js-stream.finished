@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.2 2019-05-08
+
+* Updated dependencies.
+
 ## v1.1.1 2018-09-18
 
 * Distribute only *.js and *.d.ts files.

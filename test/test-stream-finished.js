@@ -17,46 +17,52 @@ try {
 
 common.crashOnUnhandledRejection();
 
-(function () {
-  function MyReadable () {
+(function() {
+  function MyReadable() {
     stream.Readable.call(this);
   }
-  MyReadable.prototype._read = function () { };
+  MyReadable.prototype._read = function() {};
   util.inherits(MyReadable, stream.Readable);
 
   var rs = new MyReadable();
 
-  finished(rs, common.mustCall(function (err) {
-    assert(!err, 'no error');
-  }));
+  finished(
+    rs,
+    common.mustCall(function(err) {
+      assert(!err, 'no error');
+    })
+  );
 
   rs.push(null);
   rs.resume();
 })();
 
-(function () {
-  function MyWritable () {
+(function() {
+  function MyWritable() {
     stream.Writable.call(this);
   }
-  MyWritable.prototype._write = function (data, enc, cb) {
+  MyWritable.prototype._write = function(data, enc, cb) {
     cb();
   };
   util.inherits(MyWritable, stream.Writable);
 
   var ws = new MyWritable();
 
-  finished(ws, common.mustCall(function (err) {
-    assert(!err, 'no error');
-  }));
+  finished(
+    ws,
+    common.mustCall(function(err) {
+      assert(!err, 'no error');
+    })
+  );
 
   ws.end();
 })();
 
-(function () {
-  function MyTransform () {
+(function() {
+  function MyTransform() {
     stream.Transform.call(this);
   }
-  MyTransform.prototype._transform = function (data, enc, cb) {
+  MyTransform.prototype._transform = function(data, enc, cb) {
     cb();
   };
   util.inherits(MyTransform, stream.Transform);
@@ -66,32 +72,35 @@ common.crashOnUnhandledRejection();
   var finish = false;
   var ended = false;
 
-  tr.on('end', function () {
+  tr.on('end', function() {
     ended = true;
   });
 
-  tr.on('finish', function () {
+  tr.on('finish', function() {
     finish = true;
   });
 
-  finished(tr, common.mustCall(function (err) {
-    assert(!err, 'no error');
-    assert(finish);
-    assert(ended);
-  }));
+  finished(
+    tr,
+    common.mustCall(function(err) {
+      assert(!err, 'no error');
+      assert(finish);
+      assert(ended);
+    })
+  );
 
   tr.end();
   tr.resume();
 })();
 
-(function () {
+(function() {
   var rs = fs.createReadStream(__filename);
 
   rs.resume();
   finished(rs, common.mustCall());
 })();
 
-(function () {
+(function() {
   if (!promisify) return;
 
   try {
@@ -100,63 +109,71 @@ common.crashOnUnhandledRejection();
     return;
   }
 
-  function run () {
+  function run() {
     var rs = fs.createReadStream(__filename);
     var done = common.mustCall();
 
     var ended = false;
     rs.resume();
-    rs.on('end', function () {
+    rs.on('end', function() {
       ended = true;
     });
-    return finishedPromise(rs)
-      .then(function () {
-        assert(ended);
-        done();
-      });
+    return finishedPromise(rs).then(function() {
+      assert(ended);
+      done();
+    });
   }
 
   run();
 })();
 
-(function () {
+(function() {
   var rs = fs.createReadStream('file-does-not-exist');
 
-  finished(rs, common.mustCall(function (err) {
-    assert.strictEqual(err.code, 'ENOENT');
-  }));
+  finished(
+    rs,
+    common.mustCall(function(err) {
+      assert.strictEqual(err.code, 'ENOENT');
+    })
+  );
 })();
 
-(function () {
-  function MyReadable () {
+(function() {
+  function MyReadable() {
     stream.Readable.call(this);
   }
-  MyReadable.prototype._read = function () { };
+  MyReadable.prototype._read = function() {};
   util.inherits(MyReadable, stream.Readable);
 
   var rs = new MyReadable();
 
-  finished(rs, common.mustCall(function (err) {
-    assert(!err, 'no error');
-  }));
+  finished(
+    rs,
+    common.mustCall(function(err) {
+      assert(!err, 'no error');
+    })
+  );
 
   rs.push(null);
   rs.emit('close'); // should not trigger an error
   rs.resume();
 })();
 
-(function () {
-  function MyReadable () {
+(function() {
+  function MyReadable() {
     stream.Readable.call(this);
   }
-  MyReadable.prototype._read = function () { };
+  MyReadable.prototype._read = function() {};
   util.inherits(MyReadable, stream.Readable);
 
   var rs = new MyReadable();
 
-  finished(rs, common.mustCall(function (err) {
-    assert(err, 'premature close error');
-  }));
+  finished(
+    rs,
+    common.mustCall(function(err) {
+      assert(err, 'premature close error');
+    })
+  );
 
   rs.emit('close'); // should trigger error
   rs.push(null);

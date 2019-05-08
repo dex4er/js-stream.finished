@@ -1,8 +1,11 @@
 /// <reference types="node" />
 
-import * as stream from "stream";
+import * as stream from 'stream';
 
-declare function finished(stream: NodeJS.ReadableStream | NodeJS.WritableStream | NodeJS.ReadWriteStream, callback: (err?: NodeJS.ErrnoException) => void): () => void;
+declare function finished(
+  stream: NodeJS.ReadableStream | NodeJS.WritableStream | NodeJS.ReadWriteStream,
+  callback: (err?: NodeJS.ErrnoException) => void
+): () => void;
 
 declare namespace finished {
   export function getPolyfill(): typeof finished;

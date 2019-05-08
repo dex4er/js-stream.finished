@@ -1,4 +1,4 @@
-# npm i -g eslint eslint-config-prettier eslint-plugin-import eslint-plugin-node eslint-plugin-promise
+# npm i -g eslint eslint-config-prettier eslint-plugin-import eslint-plugin-node
 
 env:
   node: true

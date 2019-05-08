@@ -17,12 +17,31 @@ This package implements the [es-shim API](https://github.com/es-shims/api)
 interface. It works in an ES3-supported environment and complies with the
 [spec](http://www.ecma-international.org/ecma-262/6.0/).
 
+## Installation
+
+```shell
+npm install stream.finished
+```
+
+_Additionally for Typescript:_
+
+```shell
+npm install -D @types/node
+```
+
 ## Usage
 
 ### Direct
 
 ```js
 const finished = require('stream.finished');
+// Use `finished` just like the built-in method on `stream`
+```
+
+_Typescript:_
+
+```ts
+import finished from 'stream.finished';
 // Use `finished` just like the built-in method on `stream`
 ```
 
@@ -43,3 +62,32 @@ require('stream.finished/auto');
 const stream = require('stream');
 // Use `stream.finished`
 ```
+
+_Typescript:_
+
+```js
+import finishedShim from 'stream.finished/shim';
+finishedShim();
+// `stream.finished` is now defined
+import stream from 'stream';
+// Use `stream.finished`
+```
+
+or:
+
+```js
+import 'stream.finished/auto';
+// `stream.finished` is now defined
+import stream from 'stream';
+// Use `stream.finished`
+```
+
+## License
+
+Copyright (c) 2018-2019 Piotr Roszatycki <piotr.roszatycki@gmail.com>
+
+Copyright Node.js contributors. All rights reserved.
+
+Copyright (c) 2014 Mathias Buus
+
+[MIT](https://opensource.org/licenses/MIT)

@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0 2019-05-08
+
+* Support for promisify in Typescript.
+
 ## v1.1.2 2019-05-08
 
 * Updated dependencies.
